@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>homestay</artifactId>
+        <groupId>com.qixu</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>homestay-web</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>homestay-web</name>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.qixu</groupId>
+            <artifactId>homestay-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xinguang.tubobo</groupId>
+            <artifactId>tubobo-posthouse-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xinguang</groupId>
+            <artifactId>tubobo-rider-api</artifactId>
+        </dependency>
+        <!--容器自带-->
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang</groupId>
+            <artifactId>tubobo-rider-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang.tubobo</groupId>
+            <artifactId>tubobo-driver-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang.tubobo</groupId>
+            <artifactId>tubobo-legwork-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang.tubobo</groupId>
+            <artifactId>tubobo-account-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang.usercentergate</groupId>
+            <artifactId>usercentergate-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang.xinchen</groupId>
+            <artifactId>SMSApi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang.tubobo</groupId>
+            <artifactId>tubobo-rate-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xinguang.tubobo</groupId>
+            <artifactId>geo-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xinguang.tubobo</groupId>
+            <artifactId>lbs-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>homestay</finalName>
+    </build>
+</project>

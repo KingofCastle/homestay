@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-lazy-init="true">
+
+    <!-- 定时任务 触发器注册 -->
+    <!--<bean id="schedulerFactory"-->
+        <!--class="org.springframework.scheduling.quartz.SchedulerFactoryBean"-->
+        <!--abstract="false" scope="singleton" lazy-init="default" autowire="default">-->
+        <!--<property name="triggers">-->
+            <!--<list>-->
+            	<!--&lt;!&ndash;<ref bean="pushDelayAliSmsRecordsTrigger" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<ref bean="signWaybillTrigger" />&ndash;&gt;-->
+                <!--&lt;!&ndash;<ref bean="reportDataTrigger" />&ndash;&gt;-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+	<!--&lt;!&ndash; 推送ali滞留件短信 &ndash;&gt;-->
+    <!--<bean id="pushDelayAliSmsRecordsBean" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"-->
+        <!--abstract="false" scope="singleton" lazy-init="default" autowire="default">-->
+        <!--<property name="jobClass" value="com.xinguang.tubobo.web.admin.quartz.QuartzPushDelayAliSmsRecords"></property>-->
+        <!--<property name="durability" value="true"></property>-->
+    <!--</bean>-->
+    <!--<bean id="pushDelayAliSmsRecordsTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"-->
+        <!--abstract="false" scope="singleton" lazy-init="default" autowire="default">-->
+        <!--&lt;!&ndash; 任务的详细信息 &ndash;&gt;-->
+        <!--<property name="jobDetail">-->
+            <!--<ref bean="pushDelayAliSmsRecordsBean" />-->
+        <!--</property>-->
+        <!--<property name="cronExpression">-->
+            <!--&lt;!&ndash; 每天早上8点 &ndash;&gt;-->
+            <!--<value>0 0 8 * * ?</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!---->
+    <!--&lt;!&ndash; 签收运单 bean&ndash;&gt;-->
+	<!--<bean id="signWaybillBean" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"-->
+		<!--abstract="false" scope="singleton" lazy-init="default" autowire="default">-->
+		<!--<property name="jobClass" value="com.xinguang.tubobo.web.admin.quartz.QuartzSignWaybill"></property>-->
+		<!--<property name="durability" value="true"></property>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; 签收运单 Trigger&ndash;&gt;-->
+	<!--<bean id="signWaybillTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"-->
+		<!--abstract="false" scope="singleton" lazy-init="default" autowire="default">-->
+		<!--&lt;!&ndash; 任务的详细信息 &ndash;&gt;-->
+		<!--<property name="jobDetail">-->
+			<!--<ref bean="signWaybillBean" />-->
+		<!--</property>-->
+        <!--<property name="cronExpression">-->
+            <!--&lt;!&ndash; 每天凌晨0点 &ndash;&gt;-->
+            <!--<value>0 0 0 * * ?</value>-->
+        <!--</property>-->
+	<!--</bean>-->
+	<!---->
+	<!--&lt;!&ndash; 生成报表 bean&ndash;&gt;-->
+    <!--<bean id="reportDataBean" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"-->
+        <!--abstract="false" scope="singleton" lazy-init="default" autowire="default">-->
+        <!--<property name="jobClass" value="com.xinguang.tubobo.web.admin.quartz.QuartzReportData"></property>-->
+        <!--<property name="durability" value="true"></property>-->
+    <!--</bean>-->
+    <!--&lt;!&ndash; 生成报表 Trigger&ndash;&gt;-->
+    <!--<bean id="reportDataTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"-->
+        <!--abstract="false" scope="singleton" lazy-init="default" autowire="default">-->
+        <!--&lt;!&ndash; 任务的详细信息 &ndash;&gt;-->
+        <!--<property name="jobDetail">-->
+            <!--<ref bean="reportDataBean" />-->
+        <!--</property>-->
+        <!--<property name="cronExpression">-->
+            <!--&lt;!&ndash; 每天凌晨1点 &ndash;&gt;-->
+            <!--<value>0 0 1 * * ?</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+    
+	<!-- 附表： 
+	时间大小由小到大排列，从秒开始，顺序为 秒，分，时，日，月，年    *为任意 ？为无限制。 
+	"0/10 * * * * ?" 每10秒触发 
+	"0 0 12 * * ?" 每天中午12点触发 
+	"0 15 10 ? * *" 每天上午10:15触发 
+	"0 15 10 * * ?" 每天上午10:15触发 
+	"0 15 10 * * ? *" 每天上午10:15触发 
+	"0 15 10 * * ? 2005" 2005年的每天上午10:15触发 
+	"0 * 14 * * ?" 在每天下午2点到下午2:59期间的每1分钟触发 
+	"0 0/5 14 * * ?" 在每天下午2点到下午2:55期间的每5分钟触发 
+	"0 0/5 14,18 * * ?" 在每天下午2点到2:55期间和下午6点到6:55期间的每5分钟触发 
+	"0 0-5 14 * * ?" 在每天下午2点到下午2:05期间的每1分钟触发 
+	"0 10,44 14 ? 3 WED" 每年三月的星期三的下午2:10和2:44触发 
+	"0 15 10 ? * MON-FRI" 周一至周五的上午10:15触发 
+	"0 15 10 15 * ?" 每月15日上午10:15触发 
+	"0 15 10 L * ?" 每月最后一日的上午10:15触发 
+	"0 15 10 ? * 6L" 每月的最后一个星期五上午10:15触发 
+	"0 15 10 ? * 6L 2002-2005" 2002年至2005年的每月的最后一个星期五上午10:15触发 
+	"0 15 10 ? * 6#3" 每月的第三个星期五上午10:15触发 -->
+	
+	<!-- 
+	每隔多长时间执行一次
+	<bean id="simplerTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+	固定时间点执行一次
+	<bean id="update_redis_trigger" class="org.springframework.scheduling.quartz.CronTriggerBean"> -->
+
+</beans>  
